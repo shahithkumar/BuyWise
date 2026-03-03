@@ -1,0 +1,84 @@
+import database
+import json
+
+# This mimics real structured data we would scrape from Flipkart/Amazon
+# Follows your V1 requirements directly
+SEED_DATA = [
+    {
+        "id": "p_001",
+        "name": "Poco X5 Pro 5G",
+        "price": 22999,
+        "features": {
+            "processor": "Snapdragon 778G", 
+            "battery": "5000mAh", 
+            "camera": "108MP + 8MP + 2MP"
+        },
+        "tags": ["gaming", "performance", "photo"],
+        "rating": 4.5,
+        "link": "https://www.flipkart.com/search?q=poco+x5+pro",
+        "image_url": "https://example.com/placeholder1.png"
+    },
+    {
+        "id": "p_002",
+        "name": "Samsung Galaxy M34 5G",
+        "price": 18999,
+        "features": {
+            "processor": "Exynos 1280", 
+            "battery": "6000mAh", 
+            "camera": "50MP OIS + 8MP"
+        },
+        "tags": ["battery", "long last", "samsung", "daily use"],
+        "rating": 4.2,
+        "link": "https://www.amazon.in/s?k=samsung+m34",
+        "image_url": "https://example.com/placeholder2.png"
+    },
+    {
+        "id": "p_003",
+        "name": "Moto G84 5G",
+        "price": 19999,
+        "features": {
+            "processor": "Snapdragon 695", 
+            "battery": "5000mAh", 
+            "camera": "50MP OIS + 8MP"
+        },
+        "tags": ["clean ui", "photo", "daily use"],
+        "rating": 4.6,
+        "link": "https://www.flipkart.com/search?q=moto+g84",
+        "image_url": "https://example.com/placeholder3.png"
+    },
+    {
+        "id": "p_004",
+        "name": "iQOO Z7 Pro 5G",
+        "price": 23999,
+        "features": {
+            "processor": "Dimensity 7200", 
+            "battery": "4600mAh", 
+            "camera": "64MP OIS + 2MP"
+        },
+        "tags": ["gaming", "fast", "performance", "photo"],
+        "rating": 4.7,
+        "link": "https://www.amazon.in/s?k=iqoo+z7+pro",
+        "image_url": "https://example.com/placeholder4.png"
+    },
+    {
+        "id": "p_005",
+        "name": "Realme 11 Pro 5G",
+        "price": 23999,
+        "features": {
+            "processor": "Dimensity 7050", 
+            "battery": "5000mAh", 
+            "camera": "100MP OIS + 2MP"
+        },
+        "tags": ["camera", "photo", "video", "design"],
+        "rating": 4.4,
+        "link": "https://www.flipkart.com/search?q=realme+11+pro",
+        "image_url": "https://example.com/placeholder5.png"
+    }
+]
+
+if __name__ == "__main__":
+    print(f"Connecting to MongoDB...")
+    database.init_db()
+    print(f"Adding {len(SEED_DATA)} seed products to database...")
+    database.add_products(SEED_DATA)
+    print("Database seeding complete!")
